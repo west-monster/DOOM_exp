@@ -542,16 +542,16 @@ char            title[128];
 //
 void D_AddFile (char *file)
 {
-    int     numwadfiles;
-    char    *newfile;
-	
-    for (numwadfiles = 0 ; wadfiles[numwadfiles] ; numwadfiles++)
-	;
+	int     numwadfiles;
+	char    *newfile;
 
-    newfile = malloc (strlen(file)+1);
-    strcpy (newfile, file);
-	
-    wadfiles[numwadfiles] = newfile;
+	for (numwadfiles = 0 ; wadfiles[numwadfiles] ; numwadfiles++)
+		;
+
+	newfile = malloc (strlen(file)+1);
+	strcpy (newfile, file);
+
+	wadfiles[numwadfiles] = newfile;
 }
 
 //
@@ -614,16 +614,16 @@ void IdentifyVersion (void)
     sprintf(basedefault, "%s/.doomrc", home);
 #endif
 
-    if (M_CheckParm ("-shdev"))
-    {
-	gamemode = shareware;
-	devparm = true;
-	D_AddFile (DEVDATA"doom1.wad");
-	D_AddFile (DEVMAPS"data_se/texture1.lmp");
-	D_AddFile (DEVMAPS"data_se/pnames.lmp");
-	strcpy (basedefault,DEVDATA"default.cfg");
-	return;
-    }
+	if (M_CheckParm ("-shdev"))
+	{
+		gamemode = shareware;
+		devparm = true;
+		D_AddFile (DEVDATA"doom.wad");
+		D_AddFile (DEVMAPS"data_se/texture1.lmp");
+		D_AddFile (DEVMAPS"data_se/pnames.lmp");
+		strcpy (basedefault,DEVDATA"default.cfg");
+		return;
+	}
 
     if (M_CheckParm ("-regdev"))
     {
